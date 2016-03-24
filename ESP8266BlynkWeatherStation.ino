@@ -16,7 +16,6 @@ void setup() {
   temHumtimer.setInterval(2000L, senTempHumi);
 
   delay(10);
-  
 }
 
 
@@ -24,11 +23,17 @@ void loop() {
   Blynk.run(); // All the Blynk Magic happens here...
   temHumtimer.run(); // Initiates SimpleTimer
 
+  updateTempHumi();
+  updateLight();
+  updateCH4();
+
   if (pm25_time > millis()) pm25_time = millis();
   if (millis() - pm25_time > INTERVAL_pm25) {   
     sensorPM25=PM25();
     pm25_time = millis();    //更新计时器
   }
+
+  oled(sensor_tem, sensor_hum, sensor_light, sensorPM25, Sensor_etoh); 
 
 }
 

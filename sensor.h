@@ -49,3 +49,18 @@ float PM25() {
   pmSerial.end();     //关闭软串口
   return dustDensity; //返回值
 }
+
+
+void updateLight() {
+  sensor_light = map(analogRead(A0), 0, 1023, 0, 255);
+}
+
+void updateCH4() {
+  Sensor_etoh= map(analogRead(A2), 0, 1023, 0, 30);
+}
+
+void updateTempHumi() {
+  am2321.read();
+  sensor_tem = am2321.temperature / 10.0;
+  sensor_hum = am2321.humidity / 10.0;
+}
