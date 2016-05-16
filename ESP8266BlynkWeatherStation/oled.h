@@ -1,5 +1,5 @@
 #include <Wire.h>
-#include "U8glib.h"
+#include <U8glib.h>
 
 U8GLIB_SSD1306_128X64 u8g(U8G_I2C_OPT_NONE);     //设置OLED型号  
 //-------字体设置，大、中、小   
